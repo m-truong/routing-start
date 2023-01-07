@@ -22,11 +22,15 @@ export class ServersService {
   }
 
   getServer(id: number) {
+    // note: this method takes an 'id' of type number
     const server = this.servers.find(
+      // then it has a f(x) inside that calls Array.find()
       (s) => {
+        // which takes a higher-order f(x) as argument arrow function
         return s.id === id;
       }
-    );
+      );
+      // and returns whichever 'server' satisfies the .id 
     return server;
   }
 
