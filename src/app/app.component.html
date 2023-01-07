@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="nav nav-tabs">
+        <!-- Note: you're already on the root ->
+        <!-- Note: this takes you back on the root -->
+        <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="">
+          <a routerLink="/">Home</a>
+        </li>
+        <!-- Note: you can remove the '/' and that's prob best-practice -->
+        <li role="presentation" routerLinkActive="active">
+          <a routerLink="/servers">Servers</a>
+        </li>
+        <li role="presentation" routerLinkActive="active">
+          <a [routerLink]="['/users']">Users</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Use the <router-outlet> and Angular knows to only load inside the <router-outlet> tags-->
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
