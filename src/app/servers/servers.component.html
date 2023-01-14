@@ -3,7 +3,7 @@
     <div class="list-group">
       <!-- the routerLink array is bunch of 'elements' repreesnting Strings in the route -->
       <a 
-      [routerLink]="['/servers', 5, 'edit']"
+      [routerLink]="['/servers', server.id, 'edit']"
       [queryParams]="{ allowEdit: '1' }"
       fragment="loading"
       href="#" class="list-group-item" *ngFor="let server of servers">

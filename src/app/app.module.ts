@@ -18,6 +18,7 @@ const appRoutes = [
   // Note: this is now a dynamic path that takes a 'url' 'parameter'
   { path: 'users/:arbVarURLparameter/:name', component: UserComponent },
   { path: 'servers', component: ServersComponent },
+  { path: 'servers/:id', component: ServerComponent }, 
   { path: 'servers/servers', component: ServersComponent },
   { path: 'servers/:id/edit', component: EditServerComponent }
 ];
