@@ -15,13 +15,16 @@ export class EditServerComponent implements OnInit, OnDestroy {
   serverStatus = '';
   queryParamsSubscription: any;
   fragmentSubscription: any;
+  allowEdit = false
 
   constructor(private serversService: ServersService, private currRoute: ActivatedRoute) { }
 
   ngOnInit() {
     console.log('logging', this.currRoute.snapshot.queryParams);
     console.log('logging', this.currRoute.snapshot.fragment);
-    this.queryParamsSubscription = this.currRoute.queryParams.subscribe();
+    this.queryParamsSubscription = this.currRoute.queryParams.subscribe((queryParams: Params) => {
+      this.allowEdit = queryParams['allowEdit'] === '1' ? true : false;
+    });
     this.fragmentSubscription = this.currRoute.fragment.subscribe();
     this.server = this.serversService.getServer(1);
     this.serverName = this.server.name;
