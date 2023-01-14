@@ -14,13 +14,19 @@ import { RouterModule } from '@angular/router';
 
 const appRoutes = [
   { path: '', component: HomeComponent },
-  { path: 'users', component: UsersComponent },
-  // Note: this is now a dynamic path that takes a 'url' 'parameter'
-  { path: 'users/:arbVarURLparameter/:name', component: UserComponent },
-  { path: 'servers', component: ServersComponent },
-  { path: 'servers/:id', component: ServerComponent }, 
-  { path: 'servers/servers', component: ServersComponent },
-  { path: 'servers/:id/edit', component: EditServerComponent }
+  { path: 'users', component: UsersComponent,
+    children: [
+      // Note: this is now a dynamic path that takes a 'url' 'parameter'
+      { path: ':arbVarURLparameter/:name', component: UserComponent },
+    ]
+  },
+  { path: 'servers', component: ServersComponent,
+    // note: this nested children[] array of routes always gets pre-pended to the parent route - 'servers'  
+    children: [
+      { path: ':id', component: ServerComponent },
+      { path: ':id/edit', component: EditServerComponent } 
+    ] 
+  },
 ];
 
 @NgModule({

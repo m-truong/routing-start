@@ -3,7 +3,7 @@
     <div class="list-group">
       <!-- the routerLink array is bunch of 'elements' repreesnting Strings in the route -->
       <a 
-      [routerLink]="['/servers', server.id, 'edit']"
+      [routerLink]="['/servers', server.id]"
       [queryParams]="{ allowEdit: '1' }"
       fragment="loading"
       href="#" class="list-group-item" *ngFor="let server of servers">
@@ -12,13 +12,13 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
-    <hr />
+    <router-outlet></router-outlet>
     <!-- Note: <a> tags require an 'path' with a '/' slash -->
     <!-- <a routerLink="/servers/servers">Reload Page</a> -->
-    <button class="btn btn-primary" (click)="onReload()">Reload Page</button>
-    <hr />
-    <app-edit-server></app-edit-server>
-    <hr />
-    <app-server></app-server>
+    <!-- <button class="btn btn-primary" (click)="onReload()">Reload Page</button> -->
+    <!-- <hr /> -->
+    <!-- <app-edit-server></app-edit-server> -->
+    <!-- <hr /> -->
+    <!-- <app-server></app-server> -->
   </div>
 </div>

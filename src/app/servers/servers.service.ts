@@ -21,7 +21,7 @@ export class ServersService {
     return this.servers;
   }
 
-  getServer(id: number) {
+  getServer(id: number): {id: number, name: string, status: string} {
     // note: this method takes an 'id' of type number
     const server = this.servers.find(
       // then it has a f(x) inside that calls Array.find()
