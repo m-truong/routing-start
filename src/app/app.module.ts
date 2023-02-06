@@ -10,31 +10,9 @@ import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
-import { RouterModule } from '@angular/router';
+// import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
-const appRoutes = [
-  { path: '', component: HomeComponent },
-  { path: 'users', component: UsersComponent,
-    children: [
-      // Note: this is now a dynamic path that takes a 'url' 'parameter'
-      { path: ':arbVarURLparameter/:name', component: UserComponent },
-    ]
-  },
-  { path: 'servers', component: ServersComponent,
-    // note: this nested children[] array of routes always gets pre-pended to the parent route - 'servers'  
-    children: [
-      { path: ':id', component: ServerComponent },
-      { path: ':id/edit', component: EditServerComponent } 
-    ] 
-  },
-  {
-    path: 'not-found', component: PageNotFoundComponent
-  },
-  {
-    path: 'something', redirectTo: '/not-found'
-  }
-];
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -47,7 +25,7 @@ const appRoutes = [
     ServerComponent,
     PageNotFoundComponent,
   ],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [ServersService],
   bootstrap: [AppComponent],
 })
