@@ -36,6 +36,10 @@ const appRoutes: Routes = [
   { path: '**', redirectTo: '/not-found'}
 ];
 
+/**
+ * Note: Angular route guards allow developers to run pre-code before a route gets mounted a time defined by the developer. 
+ */
+
 @NgModule({
   imports:[
     RouterModule.forRoot(appRoutes)
