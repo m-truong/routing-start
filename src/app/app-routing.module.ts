@@ -2,6 +2,7 @@
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth-guard.service';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
       { path: ':arbVarURLparameter/:name', component: UserComponent },
     ]
   },
-  { path: 'servers', component: ServersComponent,
+  // Now 'servers' is only activated/accessible if the login method is invoked
+  { path: 'servers', canActivate: [AuthGuard], component: ServersComponent,
     // note: this nested children[] array of routes always gets pre-pended to the parent route - 'servers'  
     children: [
       { path: ':id', component: ServerComponent },
