@@ -20,7 +20,7 @@ const appRoutes: Routes = [
     ]
   },
   // Now 'servers' is only activated/accessible if the login method is invoked
-  { path: 'servers', canActivate: [AuthGuard], component: ServersComponent,
+  { path: 'servers', canActivateChild: [AuthGuard], component: ServersComponent,
     // note: this nested children[] array of routes always gets pre-pended to the parent route - 'servers'  
     children: [
       { path: ':id', component: ServerComponent },
