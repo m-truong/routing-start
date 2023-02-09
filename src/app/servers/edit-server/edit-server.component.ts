@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { ServersService } from '../servers.service';
@@ -16,8 +16,11 @@ export class EditServerComponent implements OnInit, OnDestroy {
   queryParamsSubscription: any;
   fragmentSubscription: any;
   allowEdit = false
+  changeSaved = false;
 
-  constructor(private serversService: ServersService, private currRoute: ActivatedRoute) { }
+  constructor(private serversService: ServersService,
+    private currRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     console.log('logging', this.currRoute.snapshot.queryParams);
@@ -33,6 +36,8 @@ export class EditServerComponent implements OnInit, OnDestroy {
 
   onUpdateServer() {
     this.serversService.updateServer(this.server.id, {name: this.serverName, status: this.serverStatus});
+    this.changeSaved = true;
+    this.router.navigate(['../'], { relativeTo: this.currRoute });
   }
 
   ngOnDestroy() {
