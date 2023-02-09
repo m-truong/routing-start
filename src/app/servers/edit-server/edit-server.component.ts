@@ -30,7 +30,9 @@ export class EditServerComponent implements OnInit, OnDestroy, CanComponentDeact
       this.allowEdit = queryParams['allowEdit'] === '1' ? true : false;
     });
     this.fragmentSubscription = this.currRoute.fragment.subscribe();
-    this.server = this.serversService.getServer(1);
+    const id = +this.currRoute.snapshot.params['id'];
+    this.server = this.serversService.getServer(id);
+    // Subscribe route params to update the id if params are changing
     this.serverName = this.server.name;
     this.serverStatus = this.server.status;
   }
