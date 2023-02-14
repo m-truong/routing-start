@@ -50,6 +50,8 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports:[
+    // Informs webserver to use the hashRouting in case of 404 errors
+    // RouterModule.forRoot(appRoutes, { useHash: true } )
     RouterModule.forRoot(appRoutes)
   ],
   // Note: This NgModule must also be exported 
